@@ -1,0 +1,31 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - database
+    ports:
+      - "3000:3000"
+  database:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_PORT: ${DB_PORT}
+      POSTGRES_HOST: ${DB_HOST}
+    ports:
+      - "5431:5432"
+    networks:
+      - db_network
+    volumes:
+      - db_data:/var/lib/postgresql/data # Mapeia um volume nomeado para o diretório de dados do Postgres
+    # --- Adicione esta seção de volumes nomeados no final do arquivo ---
+volumes:
+    db_data: # Define o volume nomeado 'db_data'
+      driver: local
+networks:
+  db_network:
+    driver: bridge
+    external: false
