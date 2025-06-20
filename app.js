@@ -1,7 +1,9 @@
 const express = require('express');
+const dotenv = require('dotenv');
 const app = express();
 const port = 3000;
 
+dotenv.config();
 
 const routesUsers = require('./routes/users');
 const routesQrCode = require('./routes/qr-code');

@@ -1,0 +1,18 @@
+# Dependências que serão instaladas DENTRO do contêiner
+node_modules
+
+# Arquivos de log
+npm-debug.log
+
+# Metadados do Docker
+Dockerfile
+docker-compose.yml
+
+# Arquivos do Git
+.git
+.gitignore
+
+
+
+# Pasta de dados do Postgres
+postgres-data
